@@ -22,7 +22,7 @@ TODO : learn about schemas
 """
 from fastapi import FastAPI
 from app.routes import ROUTES
-
+import rasp_spi
 app = FastAPI()
 
 
@@ -41,7 +41,8 @@ async def all_ids():
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
 async def moisture():
-    return {"message": "moisture"}
+    data = rasp_spi.read_data()
+    return {"Moisture in %": data}
 
 
 # -------------------------------------------------------
