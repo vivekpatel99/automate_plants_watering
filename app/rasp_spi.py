@@ -2,6 +2,8 @@ import spidev
 import time
 
 device = 1
+# reference 
+#https://www.youtube.com/watch?v=B9eaMVppW4U
 
 
 def init_spi():
@@ -26,3 +28,4 @@ def read_data():
 
 if __name__ == '__main__':
 	read_data()
+#test
