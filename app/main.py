@@ -17,6 +17,7 @@
 
 _useful command_
     uvicorn main:app --reload
+    uvicorn main:app --host 0.0.0.0
 
 TODO : learn about schemas
 """
@@ -41,7 +42,7 @@ async def all_ids():
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
 async def moisture():
-    data = rasp_spi.read_data()
+    data = rasp_spi.read_data()[0]
     return {"Moisture in %": data}
 
 
