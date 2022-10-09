@@ -18,7 +18,7 @@
 _useful command_
     uvicorn main:app --reload
     uvicorn main:app --host 0.0.0.0
-
+    http://192.168.0.220:8000/moisture/1
 TODO : learn about schemas
 """
 from fastapi import FastAPI
