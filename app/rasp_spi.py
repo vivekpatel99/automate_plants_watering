@@ -18,17 +18,22 @@ def init_spi():
 
 
 def read_data():
-    spi = init_spi()
-    try:
-        while True:
-            received_data = spi.readbytes(1)
-            print(received_data)
-            time.sleep(1)
-            return received_data
-    finally:
-        spi.close()
+	spi = init_spi()
+	try:
+#        while True:
+		received_data = spi.readbytes(1)[0]
+         #    print(received_data)
+		return received_data
+	finally:
+		spi.close()
 
-
+def send_data(sensor_number):
+	spi =  init_spi()
+	try:
+		spi.writebytes([sensor_number])
+		#print(f'data sent {sensor_number}')
+	finally:
+		spi.close()
 if __name__ == '__main__':
-    read_data()
-# test
+	send_data(0)
+	read_data()
