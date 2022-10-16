@@ -41,8 +41,8 @@ async def root():
 # -------------------------------------------------------
 @app.get(ROUTES.ALL_IDS)
 async def all_ids():
-    plants_info_tuple = update_plants_info(plant0).plants
-    return {"IDs": f"{plants_info_tuple}"}
+    plants_info = update_plants_info(plant0)
+    return {"IDs": f"{plants_info}"}
 
 
 # -------------------------------------------------------
