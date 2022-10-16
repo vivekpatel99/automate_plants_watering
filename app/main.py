@@ -48,11 +48,11 @@ async def all_ids():
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
 async def moisture(id: str):
-    plants_info_tuple = update_plants_info(plant0).plants
+    plants_info = update_plants_info(plant0)
     moisture_percent = 0
-    for plant in plants_info_tuple:
-        if plant.id == int(id):
-            moisture_percent = plant.moisture_percent
+    # for plant in plants_info_tuple:
+    if plants_info.id == int(id):
+        moisture_percent = plants_info.moisture_percent
 
     if not moisture_percent == 0:
         return {f"Moisture Sensor id:{id} ": f"{moisture_percent}%"}
