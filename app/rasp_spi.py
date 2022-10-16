@@ -30,11 +30,13 @@ def send_data(sensor_number: int):
     spi = init_spi()
     try:
         spi.writebytes([sensor_number])
-    # print(f'data sent {sensor_number}')
+        print(f'data sent {sensor_number}')
     finally:
         spi.close()
 
 
 if __name__ == '__main__':
-    send_data(0)
-    print(read_data())
+#    while True:
+        #data = input();
+        send_data(0)
+        print(read_data())
