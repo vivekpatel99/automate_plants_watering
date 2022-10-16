@@ -22,73 +22,75 @@ _useful command_
 TODO : learn about schemas
 """
 from fastapi import FastAPI
+
+from app.sensors import Sensors
 from routes import ROUTES
 import rasp_spi
+
 app = FastAPI()
 
 
 # -------------------------------------------------------
 @app.get(ROUTES.ROOT)
 async def root():
-    return {"message": "Hello Plant"}
+    return {"message": "Hello Plants"}
 
 
 # -------------------------------------------------------
 @app.get(ROUTES.ALL_IDS)
 async def all_ids():
-    return {"message": "all_ids"}
+    return {"IDs": f"{list(Sensors)}"}
 
 
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
-async def moisture():
-    data = rasp_spi.read_data()[0]
-    return {"Moisture in %": data}
+async def moisture(sensor_id: str):
+    data = rasp_spi.read_data()
+    return {f"Moisture Sensor id:{sensor_id}%": data}
+
+# # -------------------------------------------------------
+# @app.get(ROUTES.PUMP_PERCENTAGE)
+# async def pump_percentage():
+#     return {"message": "pump_percentage"}
 
 
 # -------------------------------------------------------
-@app.get(ROUTES.PUMP_PERCENTAGE)
-async def pump_percentage():
-    return {"message": "pump_percentage"}
+# @app.get(ROUTES.NEXT_WATER_TIME)
+# async def next_water_time():
+#     return {"message": "next_water_time"}
 
 
-# -------------------------------------------------------
-@app.get(ROUTES.NEXT_WATER_TIME)
-async def next_water_time():
-    return {"message": "next_water_time"}
-
-
-# -------------------------------------------------------
-@app.post(ROUTES.PUMP_ON)
-async def pump_on():
-    return {"message": "pump_on"}
-
-
-# -------------------------------------------------------
-@app.post(ROUTES.PUMP_OFF)
-async def pump_off():
-    return {"message": "pump_off"}
-
-
-# -------------------------------------------------------
-@app.post(ROUTES.UPDATE_PUMP_PERCENTAGE)
-async def update_pump_percentage():
-    return {"message": "update_pump_percentage"}
-
-
-# -------------------------------------------------------
-@app.post(ROUTES.UPDATE_ALL_PUMPS_PERCENTAGE)
-async def update_all_pumps_percentage():
-    return {"message": "update_all_pumps_percentage"}
-
-
-# -------------------------------------------------------
-@app.post(ROUTES.ALL_PUMPS_OFF)
-async def all_pumps_off():
-    return {"message": "all_pumps_off"}
-
-
-# -------------------------------------------------------
-@app.post(ROUTES.ALL_PUMPS_ON)
-async def all_pumps_on():
-    return {"message": "all_pumps_on"}
+# # -------------------------------------------------------
+# @app.post(ROUTES.PUMP_ON)
+# async def pump_on():
+#     return {"message": "pump_on"}
+#
+#
+# # -------------------------------------------------------
+# @app.post(ROUTES.PUMP_OFF)
+# async def pump_off():
+#     return {"message": "pump_off"}
+#
+#
+# # -------------------------------------------------------
+# @app.post(ROUTES.UPDATE_PUMP_PERCENTAGE)
+# async def update_pump_percentage():
+#     return {"message": "update_pump_percentage"}
+#
+#
+# # -------------------------------------------------------
+# @app.post(ROUTES.UPDATE_ALL_PUMPS_PERCENTAGE)
+# async def update_all_pumps_percentage():
+#     return {"message": "update_all_pumps_percentage"}
+#
+#
+# # -------------------------------------------------------
+# @app.post(ROUTES.ALL_PUMPS_OFF)
+# async def all_pumps_off():
+#     return {"message": "all_pumps_off"}
+#
+#
+# # -------------------------------------------------------
+# @app.post(ROUTES.ALL_PUMPS_ON)
+# async def all_pumps_on():
+#     return {"message": "all_pumps_on"}
