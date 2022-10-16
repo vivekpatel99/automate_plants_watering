@@ -23,7 +23,7 @@ TODO : learn about schemas
 """
 from fastapi import FastAPI
 
-from app.sensors import Sensors
+from sensors import Sensors
 from routes import ROUTES
 import rasp_spi
 
