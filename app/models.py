@@ -23,4 +23,4 @@ Plant0 = Plant(id=0, pump_percent=40)
 
 @dataclass
 class Plants:
-    plants: tuple = (Plant0)
+    plants: list = [Plant0]
