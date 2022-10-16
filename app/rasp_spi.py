@@ -11,7 +11,7 @@ device = 1
 def init_spi():
     spi = spidev.SpiDev()
     spi.open(0, device)
-    spi.max_speed_hz = 2_50_000  # 10000
+    spi.max_speed_hz = 10000  # 2_50_000  #
     spi.mode = 0b11
     time.sleep(0.05)
     return spi
@@ -29,7 +29,8 @@ def read_data():
 def send_data(sensor_number: int):
     spi = init_spi()
     try:
-        spi.writebytes([sensor_number])
+        # spi.writebytes([sensor_number])
+        spi.xfer2([sensor_number])
         print(f'data sent {sensor_number}')
     finally:
         spi.close()
