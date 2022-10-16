@@ -45,9 +45,8 @@ async def all_ids():
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
 async def moisture(ID: str):
-    #data = rasp_spi.read_data()
-    data = 0
-    print(f'sensor_id {ID}')
+    rasp_spi.send_data(int(ID))
+    data = rasp_spi.read_data()
     return {f"Moisture Sensor id:{ID}%": data}
 
 # # -------------------------------------------------------
