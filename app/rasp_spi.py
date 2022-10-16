@@ -11,7 +11,7 @@ device = 1
 def init_spi():
     spi = spidev.SpiDev()
     spi.open(0, device)
-    spi.max_speed_hz = 10000
+    spi.max_speed_hz = 2_50_000  # 10000
     spi.mode = 0b11
     time.sleep(0.05)
     return spi
@@ -36,7 +36,7 @@ def send_data(sensor_number: int):
 
 
 if __name__ == '__main__':
-#    while True:
-        #data = input();
-        send_data(0)
-        print(read_data())
+    #    while True:
+    # data = input();
+    send_data(0)
+    print(read_data())
