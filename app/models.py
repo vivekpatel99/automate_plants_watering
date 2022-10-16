@@ -17,10 +17,9 @@ class Plant(BaseModel):
 
 Plant0 = Plant(id=0, pump_percent=40)
 
-
 # Plant1 = Plant(id=1, pump_percent=50)
 
 
-@dataclass
-class Plants:
-    plants: list = [Plant0]
+# @dataclass
+# class Plants:
+#     plants: list[Plant] = [Plant0]
