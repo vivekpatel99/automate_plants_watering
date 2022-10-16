@@ -27,6 +27,7 @@ from fastapi import FastAPI
 from core.helper import update_plants_info
 from routes import ROUTES
 import rasp_spi
+from models import plant0
 
 app = FastAPI()
 
@@ -40,14 +41,14 @@ async def root():
 # -------------------------------------------------------
 @app.get(ROUTES.ALL_IDS)
 async def all_ids():
-    plants_info_tuple = update_plants_info().plants
+    plants_info_tuple = update_plants_info(plant0).plants
     return {"IDs": f"{plants_info_tuple}"}
 
 
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
 async def moisture(id: str):
-    plants_info_tuple = update_plants_info().plants
+    plants_info_tuple = update_plants_info(plant0).plants
     moisture_percent = 0
     for plant in plants_info_tuple:
         if plant.id == int(id):

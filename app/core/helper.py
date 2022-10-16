@@ -3,7 +3,7 @@ update all the plant data.
 """
 import time
 
-from models import Plant, Plant0
+from models import Plant, plant0
 import rasp_spi
 
 
@@ -28,4 +28,4 @@ def update_plants_info(_plant: Plant) -> Plant:
 
 
 if __name__ == '__main__':
-    update_plants_info(Plant0)
+    update_plants_info(plant0)
