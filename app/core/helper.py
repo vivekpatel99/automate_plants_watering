@@ -22,8 +22,6 @@ def update_plants_info(_plant: Plant) -> Plant:
 
     print(_plant.id, data)
     _plant.moisture_percent = data
-    time.sleep(0.1)
-    print(_plant.plants)
     return _plant
 
 
