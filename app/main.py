@@ -47,6 +47,7 @@ async def all_ids():
 async def moisture(sensor_id: str):
     #data = rasp_spi.read_data()
     data = 0
+    print(f'sensor_id {sensor_id}')
     return {f"Moisture Sensor id:{sensor_id}%": data}
 
 # # -------------------------------------------------------
