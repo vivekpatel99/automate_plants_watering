@@ -50,7 +50,7 @@ async def all_ids():
 async def moisture(id: str):
     moisture_percent = 0
     for plant in plants_info_tuple:
-        if plant.id == id:
+        if plant.id == int(id):
             moisture_percent = plant.moisture_percent
 
     if not moisture_percent == 0:
