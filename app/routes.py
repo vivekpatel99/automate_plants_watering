@@ -1,6 +1,6 @@
 class ROUTES:
     ROOT = "/"
-    ALL_idS = "/all-ids"
+    ALL_IDS = "/all-ids"
     MOISTURE = "/moisture/{id}"
     PUMP_PERCENTAGE = "/pump-percentage/{id}"
     NEXT_WATER_TIME = "/next-water-time/{id}"
