@@ -2,9 +2,8 @@
 update all the plant data.
 """
 
-from app.models import Plants
-
-from app import rasp_spi
+from models import Plants
+import rasp_spi
 
 
 def update_plants_info() -> Plants:

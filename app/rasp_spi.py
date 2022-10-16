@@ -37,4 +37,4 @@ def send_data(sensor_number: int):
 
 if __name__ == '__main__':
     send_data(0)
-    read_data()
+    print(read_data())
