@@ -38,7 +38,7 @@ Tiva part is written in C language and Raspberry Pi part is written in python in
 
 ## Setup Raspberry Pi Zero W  
    1. Prepare SD card with Raspberry Pi OS (lite).
-   2. Clone the Repo
+   2. Clone the Repo in Raspberry Pi
 
 ## HowTo Run the Project
 1. Follow HowTo Setup guide
