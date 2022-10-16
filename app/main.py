@@ -18,16 +18,19 @@
 _useful command_
     uvicorn main:app --reload
     uvicorn main:app --host 0.0.0.0
-    http://192.168.0.220:8000/moisture/1
+    http://Raspberry.pi.IP.Address/moisture/1
+
 TODO : learn about schemas
 """
 from fastapi import FastAPI
 
-from sensors import Sensors
+from core.helper import update_plants_info
 from routes import ROUTES
 import rasp_spi
 
 app = FastAPI()
+
+plants_info_tuple = update_plants_info().plants
 
 
 # -------------------------------------------------------
@@ -39,16 +42,21 @@ async def root():
 # -------------------------------------------------------
 @app.get(ROUTES.ALL_IDS)
 async def all_ids():
-    return {"IDs": f"{list(Sensors)}"}
+    return {"IDs": f"{plants_info_tuple}"}
 
 
 # -------------------------------------------------------
 @app.get(ROUTES.MOISTURE)
-async def moisture(ID: str):
-    rasp_spi.send_data(int(ID))
-    data = rasp_spi.read_data()
+async def moisture(id: str):
+    moisture_percent = 0
+    for plant in plants_info_tuple:
+        if plant.id == id:
+            moisture_percent = plant.moisture_percent
 
-    return {f"Moisture Sensor id:{ID} ": f"{data}%"}
+    if not moisture_percent == 0:
+        return {f"Moisture Sensor id:{id} ": f"{moisture_percent}%"}
+    else:
+        return {f"ERROR Moisture Sensor id:{id} ": f"{moisture_percent}%"}
 
 # # -------------------------------------------------------
 # @app.get(ROUTES.PUMP_PERCENTAGE)
