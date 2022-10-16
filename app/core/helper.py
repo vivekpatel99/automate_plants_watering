@@ -1,6 +1,7 @@
 """
 update all the plant data.
 """
+import time
 
 from models import Plants
 import rasp_spi
@@ -18,9 +19,10 @@ def update_plants_info() -> Plants:
         print(plant.id)
         rasp_spi.send_data(plant.id)
         data = rasp_spi.read_data()
+
         print(plant.id, data)
         plant.moisture_percent = data
-
+        time.sleep(0.1)
     return Plants
 
 
