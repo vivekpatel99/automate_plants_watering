@@ -16,10 +16,10 @@ def update_plants_info() -> Plants:
     """
 
     for plant in Plants.plants:
-       # print(plant.id)
+        # print(plant.id)
         rasp_spi.send_data(plant.id)
         time.sleep(0.1)
-	data = rasp_spi.read_data()
+        data = rasp_spi.read_data()
 
         print(plant.id, data)
         plant.moisture_percent = data
